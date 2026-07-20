@@ -1,0 +1,20 @@
+{
+  "name": "picture-lab-py",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "postCreateCommand": "pip install --no-cache-dir -r requirements.txt && pip install --no-cache-dir -e .",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        "jupyter.askForKernelRestart": false
+      }
+    }
+  },
+  "forwardPorts": [],
+  "hostRequirements": {
+    "cpus": 2
+  }
+}
