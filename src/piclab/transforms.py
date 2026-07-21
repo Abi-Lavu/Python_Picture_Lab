@@ -21,10 +21,10 @@ def set_pixel(pixels: np.ndarray, row: int, col: int, rgb: tuple[int, int, int])
 
 def zero_blue(pixels: np.ndarray) -> np.ndarray:
     result = pixels.copy()
-    height, width, _ = result.shape
+    height, width, pixels = result.shape
     for row in range(height):
         for col in range(width):
-            r, g, _ = get_pixel(result, row, col)
+            r, g, b = get_pixel(result, row, col)
             set_pixel(result, row, col, (r, g, 0))
     return result
 
@@ -79,7 +79,7 @@ def color_distance(c1: tuple[int, int, int], c2: tuple[int, int, int]) -> float:
 
 def edge_detection(pixels: np.ndarray, edge_dist: float) -> np.ndarray:
     result = pixels.copy()
-    height, width, _ = result.shape
+    height, width, num = result.shape
     for row in range(height):
         for col in range(width - 1):
             left = get_pixel(result, row, col)
