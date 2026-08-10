@@ -28,6 +28,14 @@ def zero_blue(pixels: np.ndarray) -> np.ndarray:
             set_pixel(result, row, col, (r, g, 0))
     return result
 
+def zero_red(pixels: np.ndarray) -> np.ndarray:
+    result = pixels.copy()
+    height, width, pixels = result.shape
+    for row in range(height):
+        for col in range(width):
+            r, g, b = get_pixel(result, row, col)
+            set_pixel(result, row, col, (0, g, b))
+    return result
 
 def mirror_vertical(pixels: np.ndarray) -> np.ndarray:
     result = pixels.copy()
@@ -36,6 +44,15 @@ def mirror_vertical(pixels: np.ndarray) -> np.ndarray:
         for col in range(width // 2):
             left = get_pixel(result, row, col)
             set_pixel(result, row, width - 1 - col, left)
+    return result
+
+def mirror_horizontal(pixels: np.ndarray) -> np.ndarray:
+    result = pixels.copy()
+    height, width, _ = result.shape
+    for row in range(height // 2):
+        for col in range(width):
+            top = get_pixel(result, row, col)
+            set_pixel(result, height - 1 - row, col, top)
     return result
 
 
