@@ -54,6 +54,20 @@ def mirror_horizontal(pixels: np.ndarray) -> np.ndarray:
             top = get_pixel(result, row, col)
             set_pixel(result, height - 1 - row, col, top)
     return result
+def grey_scale(pixels: np.ndarray) -> np.ndarray:
+    result = pixels.copy()
+    height, width, _ = result.shape
+
+    for row in range(height):
+        for col in range(width):
+            r, g, b = get_pixel(result, row, col)
+
+            brightness = int(
+                np.sqrt((r**2 + g**2 + b**2) / 3))
+
+            set_pixel(
+                result, row, col, (brightness, brightness, brightness))
+    return result
 
 
 def mirror_region(
@@ -71,7 +85,6 @@ def mirror_region(
             if target_col < result.shape[1]:
                 set_pixel(result, row, target_col, left)
     return result
-
 
 def copy_into(
     dest: np.ndarray,

@@ -27,6 +27,10 @@ def mirror_vertical(pixels: np.ndarray) -> np.ndarray:
     result[:, width - half :, :] = pixels[:, :half, :][:, ::-1, :]
     return result
 
+def mirror_diagonal(pixels: np.ndarray) -> np.ndarray:
+    result = np.transpose(pixels, (1, 0, 2)).copy()
+    return result
+
 
 def edge_detection(pixels: np.ndarray, edge_dist: float) -> np.ndarray:
     result = pixels.copy()
